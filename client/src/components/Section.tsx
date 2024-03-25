@@ -13,6 +13,7 @@ interface Props {
 
 export const Section: React.FC<Props> = ({ status }) => {
   const { tasks, setTasks } = useContext(TaskContext);
+
   const filteredTasks = tasks.filter((task) => task.status === status);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -64,7 +65,7 @@ export const Section: React.FC<Props> = ({ status }) => {
     >
       <Header text={text} bg={bg} count={filteredTasks.length} />
       {filteredTasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem key={task._id} task={task} />
       ))}
     </div>
   );
